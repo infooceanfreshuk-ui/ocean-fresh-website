@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ocean-900: #0f172a;
+  --color-ocean-800: #1e3a8a;
+  --color-ocean-700: #1d4ed8;
+  --color-ocean-600: #2563eb;
+  --color-ocean-500: #3b82f6;
+  --color-ocean-400: #60a5fa;
+  --color-ocean-300: #93c5fd;
+  --color-ocean-200: #bfdbfe;
+  --color-ocean-100: #dbeafe;
+  --color-ocean-50: #eff6ff;
+
+  --color-aqua-500: #06b6d4;
+  --color-aqua-400: #22d3ee;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #0f172a;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20;
+  }
+}
+
+@layer utilities {
+  @keyframes morph {
+    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+    67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+    100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  }
+}
