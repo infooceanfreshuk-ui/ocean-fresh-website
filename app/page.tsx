@@ -10,13 +10,9 @@ import { companyInfo } from "@/config/company";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white pt-24">
+    <main className="min-h-screen bg-ocean-white pt-24">
       <Hero />
-      <div 
-        className="bg-cover bg-center bg-fixed w-full h-full relative" 
-        style={{ backgroundImage: "url('/images/bg-pattern.png')" }}
-      >
-        <div className="absolute inset-0 bg-white/40 pointer-events-none" />
+      <div className="w-full h-full relative">
         <div className="relative z-10">
           <TrustBar />
           <SeafoodCategories />

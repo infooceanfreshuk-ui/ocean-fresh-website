@@ -143,7 +143,6 @@ export default function AboutPage() {
 
       {/* Vision & Future Direction */}
       <section className="py-24 bg-ocean-deep text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/images/bg-pattern.png')", backgroundSize: 'cover' }}></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>

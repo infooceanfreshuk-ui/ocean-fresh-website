@@ -22,7 +22,6 @@ export default function ContactPage() {
           
           {/* Contact Info Sidebar */}
           <div className="lg:col-span-1 bg-ocean-deep text-white rounded-[2rem] p-8 md:p-10 relative overflow-hidden shadow-xl">
-            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/images/bg-pattern.png')", backgroundSize: 'cover' }}></div>
             <div className="relative z-10 h-full flex flex-col">
               <h3 className="text-2xl font-bold mb-8">{companyInfo.legalName}</h3>
               

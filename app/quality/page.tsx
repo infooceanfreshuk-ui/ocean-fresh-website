@@ -7,7 +7,6 @@ export default function QualityPage() {
       {/* Hero / Food Safety Trust Statement */}
       <section className="container mx-auto px-4 md:px-6 mb-24">
         <div className="bg-ocean-deep rounded-[3rem] p-8 md:p-16 lg:p-24 overflow-hidden relative shadow-xl text-center text-white">
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/images/bg-pattern.png')", backgroundSize: 'cover' }}></div>
           <div className="max-w-4xl mx-auto relative z-10">
             <ShieldCheck size={64} className="mx-auto mb-8 text-fresh-aqua" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8">

@@ -7,7 +7,6 @@ export function WhyChooseUs() {
     <section id="quality" className="py-24 px-4 md:px-6">
       <div className="container mx-auto">
         <div className="bg-ocean-deep rounded-[3rem] overflow-hidden shadow-xl shadow-ocean-navy/50 relative">
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/images/bg-pattern.png')", backgroundSize: 'cover' }}></div>
           <div className="grid lg:grid-cols-2 relative z-10">
             
             {/* Left Content */}

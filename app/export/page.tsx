@@ -46,7 +46,6 @@ export default function ExportPage() {
 
       {/* Process Flow */}
       <section className="py-24 bg-ocean-deep text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/images/bg-pattern.png')", backgroundSize: 'cover' }}></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">How MAP Works</h2>
