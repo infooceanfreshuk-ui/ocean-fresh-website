@@ -1,27 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ocean-900: #0f172a;
-  --color-ocean-800: #1e3a8a;
-  --color-ocean-700: #1d4ed8;
-  --color-ocean-600: #2563eb;
-  --color-ocean-500: #3b82f6;
-  --color-ocean-400: #60a5fa;
-  --color-ocean-300: #93c5fd;
-  --color-ocean-200: #bfdbfe;
-  --color-ocean-100: #dbeafe;
-  --color-ocean-50: #eff6ff;
-
-  --color-aqua-500: #06b6d4;
-  --color-aqua-400: #22d3ee;
+  /* Primary */
+  --color-ocean-deep: #062B3A;
+  --color-ocean-navy: #073B4C;
+  --color-ocean-blue: #0B5D73;
+  
+  /* Secondary */
+  --color-marine-teal: #0F766E;
+  --color-deep-teal: #115E59;
+  --color-aqua: #22A6B3;
+  
+  /* Accent */
+  --color-fresh-aqua: #38C6D9;
+  --color-seafoam: #8FE3D4;
+  
+  /* Neutral / Surface */
+  --color-ocean-white: #F4FAFA;
+  --color-marine-surface: #EAF5F6;
+  --color-marine-gray: #D7E7E9;
+  
+  /* Text */
+  --color-text-primary: #082C36;
+  --color-text-muted: #5B747A;
   
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #0f172a;
+    --background: #F4FAFA;
+    --foreground: #082C36;
   }
   
   html {

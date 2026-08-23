@@ -26,18 +26,18 @@ export default function Home() {
           {/* Future Direction Teaser */}
           <section className="py-16 px-4 md:px-6">
             <div className="container mx-auto">
-              <div className="bg-ocean-100 rounded-[2rem] p-8 md:p-12 border border-ocean-200 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+              <div className="bg-ocean-white rounded-[2rem] p-8 md:p-12 border border-marine-gray flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
                 <div>
                   <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
-                    <Target className="text-ocean-600" size={24} />
-                    <h3 className="text-2xl font-bold text-ocean-900">Looking Ahead</h3>
+                    <Target className="text-ocean-blue" size={24} />
+                    <h3 className="text-2xl font-bold text-text-primary">Looking Ahead</h3>
                   </div>
-                  <p className="text-lg text-ocean-700/90 max-w-2xl">
+                  <p className="text-lg text-text-muted max-w-2xl">
                     Expanding our range of retail-ready seafood, developing marinated ready-to-cook products, and increasing wholesale distribution across the UK and beyond.
                   </p>
                 </div>
                 <Link href="/about">
-                  <button className="whitespace-nowrap px-8 py-4 bg-white text-ocean-900 rounded-full font-semibold shadow-sm hover:shadow-md transition-all border border-ocean-200 flex items-center gap-2">
+                  <button className="whitespace-nowrap px-8 py-4 bg-white text-text-primary rounded-full font-semibold shadow-sm hover:shadow-md transition-all border border-marine-gray flex items-center gap-2">
                     Our Vision <ArrowRight size={18} />
                   </button>
                 </Link>

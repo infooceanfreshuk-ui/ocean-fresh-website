@@ -9,19 +9,19 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-ocean-600 text-white hover:bg-ocean-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300",
+        default: "bg-ocean-deep text-white border border-ocean-blue/30 hover:bg-ocean-navy shadow-sm hover:shadow-md hover:-translate-y-[2px] transition-all duration-300",
         destructive:
           "bg-red-500 text-white hover:bg-red-500/90",
         outline:
-          "border border-ocean-200 bg-white hover:bg-ocean-50 text-ocean-900",
+          "border border-ocean-blue/40 bg-transparent hover:bg-marine-surface text-ocean-deep hover:-translate-y-[2px] transition-all duration-300",
         secondary:
-          "bg-ocean-100 text-ocean-900 hover:bg-ocean-200",
-        ghost: "hover:bg-ocean-100 hover:text-ocean-900",
-        link: "text-ocean-600 underline-offset-4 hover:underline",
+          "bg-marine-surface text-ocean-deep hover:bg-marine-gray hover:-translate-y-[2px] transition-all duration-300",
+        ghost: "hover:bg-marine-surface hover:text-ocean-deep",
+        link: "text-marine-teal underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-6 py-2",

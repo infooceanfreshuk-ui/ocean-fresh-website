@@ -37,8 +37,8 @@ export function Header() {
         <div
           className={`flex items-center justify-between px-6 h-16 md:h-20 rounded-full transition-all duration-300 ${
             isScrolled
-              ? "bg-white/90 backdrop-blur-md shadow-lg border border-ocean-50"
-              : "bg-white shadow-sm border border-ocean-50"
+              ? "bg-ocean-white/90 backdrop-blur-md shadow-lg border border-ocean-blue/10"
+              : "bg-ocean-white/80 backdrop-blur-sm shadow-sm border border-transparent"
           }`}
         >
           {/* Logo */}
@@ -58,7 +58,7 @@ export function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-ocean-900 hover:text-ocean-600 transition-colors"
+                className="text-sm font-medium text-text-primary hover:text-marine-teal transition-colors"
               >
                 {link.name}
               </Link>
@@ -70,7 +70,7 @@ export function Header() {
             <Button className="hidden md:inline-flex rounded-full">Request a Quote</Button>
             
             <button
-              className="lg:hidden p-2 text-ocean-900"
+              className="lg:hidden p-2 text-text-primary hover:text-marine-teal transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -82,12 +82,12 @@ export function Header() {
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 mt-2 px-4">
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-4 flex flex-col gap-4">
+          <div className="bg-ocean-white rounded-2xl shadow-xl border border-marine-gray p-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-base font-medium text-ocean-900 p-2 hover:bg-ocean-50 rounded-lg transition-colors"
+                className="text-base font-medium text-text-primary p-2 hover:bg-marine-surface rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}

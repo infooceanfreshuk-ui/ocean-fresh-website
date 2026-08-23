@@ -23,20 +23,20 @@ export function Hero() {
         The Hero Text Section - Now completely below the video, acting as a full-screen section.
         It appears only after the scroll animation is 100% complete.
       */}
-      <section id="home" className="min-h-[100svh] w-full bg-white flex flex-col items-center justify-center py-20 px-4 md:px-8 text-center relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+      <section id="home" className="min-h-[100svh] w-full bg-ocean-white flex flex-col items-center justify-center py-20 px-4 md:px-8 text-center relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
         <div className="container mx-auto max-w-5xl">
           <div className="space-y-10 flex flex-col items-center">
             
-            <span className="px-6 py-2.5 bg-ocean-50 text-ocean-700 rounded-full text-sm font-bold uppercase tracking-widest shadow-sm border border-ocean-100">
+            <span className="px-6 py-2.5 bg-marine-surface text-marine-teal rounded-full text-sm font-bold uppercase tracking-widest shadow-sm border border-marine-gray">
               {companyInfo.legalName}
             </span>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-ocean-900 leading-[1.1]">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-text-primary leading-[1.1]">
               Global Sourcing. <br />
-              UK <span className="text-ocean-600">Processing</span>.
+              UK <span className="text-ocean-blue">Processing</span>.
             </h1>
             
-            <p className="text-xl md:text-2xl text-ocean-900/70 max-w-3xl leading-relaxed font-medium mx-auto">
+            <p className="text-xl md:text-2xl text-text-muted max-w-3xl leading-relaxed font-medium mx-auto">
               We combine strong international seafood sourcing with advanced UK-based processing and professional packaging for retail and wholesale.
             </p>
             
@@ -55,7 +55,7 @@ export function Hero() {
             </div>
 
             {/* Trust badges - Full width grid layout */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-ocean-100/50 mt-12 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-marine-gray/50 mt-12 w-full">
               {[
                 { icon: ShieldCheck, text: "BI 307 Approved" },
                 { icon: Globe2, text: "Global Sourcing" },
@@ -66,10 +66,10 @@ export function Hero() {
                   key={index} 
                   className="flex flex-col items-center gap-4 text-center"
                 >
-                  <div className="bg-ocean-50 p-4 rounded-2xl shadow-sm text-ocean-600 border border-ocean-100">
+                  <div className="bg-marine-surface p-4 rounded-2xl shadow-sm text-marine-teal border border-marine-gray">
                     <item.icon size={28} />
                   </div>
-                  <span className="text-base font-semibold text-ocean-900/80">{item.text}</span>
+                  <span className="text-base font-semibold text-text-muted">{item.text}</span>
                 </div>
               ))}
             </div>

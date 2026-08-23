@@ -8,30 +8,30 @@ export function ProductShowcase() {
       <div className="container mx-auto">
         
         <div className="flex items-center justify-center mb-16">
-          <div className="h-px bg-ocean-200 flex-1 max-w-[100px] md:max-w-[200px]" />
-          <h2 className="text-3xl md:text-4xl font-bold text-ocean-900 mx-8 tracking-tight text-center">
+          <div className="h-px bg-ocean-blue/20 flex-1 max-w-[100px] md:max-w-[200px]" />
+          <h2 className="text-3xl md:text-4xl font-bold text-ocean-deep mx-8 tracking-tight text-center">
             Recommended For You
           </h2>
-          <div className="h-px bg-ocean-200 flex-1 max-w-[100px] md:max-w-[200px]" />
+          <div className="h-px bg-ocean-blue/20 flex-1 max-w-[100px] md:max-w-[200px]" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {siteConfig.products.map((product) => (
             <div 
               key={product.id}
-              className="bg-white rounded-3xl p-4 border border-ocean-100 shadow-sm hover:shadow-lg transition-all duration-300 group"
+              className="bg-ocean-white rounded-3xl p-4 border border-ocean-blue/15 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
             >
-              <div className="aspect-square bg-ocean-50 rounded-2xl mb-4 relative overflow-hidden flex items-center justify-center p-4">
+              <div className="aspect-square bg-marine-surface rounded-2xl mb-4 relative overflow-hidden flex items-center justify-center p-4">
                 <Image src={product.image} alt={product.name} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-500" />
               </div>
               
               <div className="px-2 pb-2">
-                <h3 className="font-bold text-ocean-900 text-lg mb-1">{product.name}</h3>
-                {(product as any).specs && <p className="text-sm text-ocean-600 mb-4">{(product as any).specs}</p>}
+                <h3 className="font-bold text-ocean-deep text-lg mb-1">{product.name}</h3>
+                {(product as any).specs && <p className="text-sm text-text-muted mb-4">{(product as any).specs}</p>}
                 
                 <div className="flex items-center justify-between mt-4">
-                  <span className="font-medium text-ocean-700 text-sm">Export Quality</span>
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-ocean-50 text-ocean-700 font-medium text-sm hover:bg-ocean-600 hover:text-white transition-colors">
+                  <span className="font-medium text-marine-teal text-sm">Export Quality</span>
+                  <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-marine-surface text-ocean-blue font-medium text-sm hover:bg-ocean-navy hover:text-white transition-colors">
                     Request Quote
                   </button>
                 </div>
