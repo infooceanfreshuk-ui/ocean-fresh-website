@@ -12,18 +12,22 @@ export function Hero() {
 
   return (
     <section id="home" ref={containerRef} className="h-[300vh] relative bg-ocean-950">
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden flex items-center justify-center">
-        {/* Background Layer: Cinematic Scroll Video */}
+      {/* Pinned Video Container - Plays unobstructed during the scroll */}
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
         <ScrollVideo src="/videos/hero-scroll.mp4" containerRef={containerRef} />
-        
-        {/* Subtle Gradient Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ocean-950/80 via-ocean-900/40 to-transparent pointer-events-none" />
+        {/* Optional overlay for the very end when text comes up */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ocean-950/80 to-transparent opacity-0 transition-opacity duration-1000" />
+      </div>
 
-        {/* Foreground Layer: Hero Content */}
-        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20 h-full flex flex-col justify-center">
+      {/* 
+        The Hero Text Card - Positioned at the very end of the 300vh scroll area.
+        This means it will naturally scroll into view ONLY AFTER the video animation has completed.
+      */}
+      <div className="absolute bottom-0 w-full min-h-[100svh] flex items-center justify-center z-10 pointer-events-none pb-16">
+        <div className="container mx-auto px-4 md:px-6 pointer-events-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content Card - Restricted to left side to show video clearly on the right */}
-            <div className="bg-white/85 backdrop-blur-md rounded-[3rem] p-8 md:p-12 shadow-2xl border border-white/20 animate-in fade-in slide-in-from-bottom-10 duration-1000">
+            {/* Content Card */}
+            <div className="bg-white/90 backdrop-blur-md rounded-[3rem] p-8 md:p-12 shadow-2xl border border-white/20">
               <div className="space-y-8">
                 <span className="px-4 py-2 bg-ocean-50 text-ocean-700 rounded-full text-sm font-bold uppercase tracking-wider shadow-sm border border-ocean-100">
                   {companyInfo.legalName}
@@ -62,7 +66,6 @@ export function Hero() {
                     <div 
                       key={index} 
                       className="flex items-center gap-3"
-                      style={{ transitionDelay: `${300 + index * 100}ms` }}
                     >
                       <div className="bg-ocean-50 p-2 rounded-xl shadow-sm text-ocean-600 border border-ocean-100">
                         <item.icon size={18} />
@@ -73,11 +76,8 @@ export function Hero() {
                 </div>
               </div>
             </div>
-            
-            {/* Right area empty to show the premium video clearly */}
-            <div className="hidden lg:block h-full min-h-[500px]">
-              {/* The video is visible through this side of the card, acting as the primary visual */}
-            </div>
+            {/* Right area empty */}
+            <div className="hidden lg:block h-full min-h-[500px]"></div>
           </div>
         </div>
       </div>
