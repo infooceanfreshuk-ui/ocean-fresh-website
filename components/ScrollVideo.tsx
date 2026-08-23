@@ -25,20 +25,14 @@ export function ScrollVideo({ src, containerRef }: ScrollVideoProps) {
             const rect = container.getBoundingClientRect();
             const scrollableDistance = rect.height - window.innerHeight;
             
-            // Calculate scroll progress constrained between 0 and 1
             const scrolled = Math.max(0, Math.min(-rect.top, scrollableDistance));
-            
-            let progress = 0;
-            if (scrollableDistance > 0) {
-              progress = scrolled / scrollableDistance;
-            }
-            
-            // Map scroll progress to video duration
+            let progress = scrollableDistance > 0 ? scrolled / scrollableDistance : 0;
             const targetTime = progress * video.duration;
 
-            // Update time directly rather than continuously lerping, which crashes performance
-            // Only update if difference is > 0.04s (approx 24fps) to prevent decoder thrashing
-            if (Math.abs(video.currentTime - targetTime) > 0.04) {
+            // Extremely aggressive throttle: 
+            // 1. Only seek if the video is NOT currently seeking (prevents browser lockups)
+            // 2. Only seek if time difference is > 0.08s (~12fps) to drastically reduce decoder strain
+            if (!video.seeking && Math.abs(video.currentTime - targetTime) > 0.08) {
               video.currentTime = targetTime;
             }
           }
@@ -51,7 +45,6 @@ export function ScrollVideo({ src, containerRef }: ScrollVideoProps) {
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
     
-    // Initial calculation
     handleScroll();
 
     return () => {
@@ -68,6 +61,7 @@ export function ScrollVideo({ src, containerRef }: ScrollVideoProps) {
       preload="auto"
       muted
       playsInline
+      style={{ willChange: 'transform' }} // Hint browser to hardware accelerate
       onLoadedMetadata={() => setIsLoaded(true)}
     />
   );
