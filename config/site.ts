@@ -62,43 +62,43 @@ export const siteConfig = {
       id: "fish",
       name: "FISH",
       description: "Premium quality fish from deep waters",
-      image: "/images/products/seabass.jpg"
+      image: "/images/categories/premium_fish_1787566465214.jpg"
     },
     {
       id: "crab",
       name: "CRAB",
       description: "Fresh and delicious crab",
-      image: "/images/products/mud-crab.jpg"
+      image: "/images/categories/premium_crab_1787566477910.jpg"
     },
     {
       id: "lobster",
       name: "LOBSTER",
       description: "Premium lobster selections",
-      image: "/images/products/lobster.jpeg"
+      image: "/images/categories/premium_lobster_1787566491523.jpg"
     },
     {
       id: "prawns",
       name: "PRAWNS",
       description: "Farm & wild caught prawns",
-      image: "/images/products/prawns.jpg"
+      image: "/images/categories/premium_prawns_1787566503015.jpg"
     },
     {
       id: "shellfish",
       name: "SHELLFISH",
       description: "Scallops, clams & more",
-      image: "/images/products/scallops.jpg"
+      image: "/images/categories/premium_shellfish_1787566519636.jpg"
     },
     {
       id: "squid",
       name: "SQUID",
       description: "Cleaned, processed & packed",
-      image: "/images/products/squid.jpg"
+      image: "/images/categories/premium_squid_1787566532991.jpg"
     },
     {
       id: "specialty",
       name: "SPECIALTY",
       description: "Premium specialty items",
-      image: "/images/products/caviar.jpg"
+      image: "/images/categories/premium_specialty_1787566545325.jpg"
     }
   ]
 };
