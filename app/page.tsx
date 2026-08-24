@@ -12,12 +12,20 @@ export default function Home() {
     <main className="min-h-screen bg-ocean-white">
       <Hero />
       <div className="w-full h-full relative z-20 bg-ocean-white">
-        <CompanyIntro />
-        <GlobalScale />
-        <SeafoodStory />
-        <ProductShowcase />
-        <Processing />
-        <Quality />
+        <div id="about">
+          <CompanyIntro />
+          <GlobalScale />
+        </div>
+        <div id="products">
+          <SeafoodStory />
+          <ProductShowcase />
+        </div>
+        <div id="processing">
+          <Processing />
+        </div>
+        <div id="quality">
+          <Quality />
+        </div>
         <CTASection />
       </div>
     </main>

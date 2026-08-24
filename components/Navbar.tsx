@@ -8,10 +8,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "./ui/Button";
 
 const navLinks = [
-  { name: "Our Story", href: "/about" },
-  { name: "Seafood", href: "/products" },
-  { name: "Processing", href: "/processing" },
-  { name: "Traceability", href: "/quality" },
+  { name: "Our Story", href: "/#about" },
+  { name: "Seafood", href: "/#products" },
+  { name: "Processing", href: "/#processing" },
+  { name: "Traceability", href: "/#quality" },
 ];
 
 export function Navbar() {
