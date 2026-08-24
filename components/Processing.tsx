@@ -30,14 +30,20 @@ export function Processing() {
             // Calculate opacity for each image based on scroll progress
             const start = i / stages.length;
             const end = (i + 1) / stages.length;
+            // Ensure strictly increasing values for Framer Motion / WAAPI
+            const s1 = Math.max(0, start - 0.05);
+            const s2 = Math.max(s1 + 0.001, start);
+            const s3 = Math.min(1 - 0.001, end);
+            const s4 = Math.min(1, end + 0.05);
+
             const opacity = useTransform(
               scrollYProgress,
-              [start - 0.05, start, end, end + 0.05],
+              [s1, s2, s3, s4],
               [0, 1, 1, 0]
             );
             const scale = useTransform(
               scrollYProgress,
-              [start, end],
+              [start, Math.max(start + 0.001, end)],
               [1, 1.1]
             );
 
@@ -67,16 +73,26 @@ export function Processing() {
               const start = i / stages.length;
               const end = (i + 1) / stages.length;
               
+              const s1 = Math.max(0, start - 0.05);
+              const s2 = Math.max(s1 + 0.001, start);
+              const s3 = Math.min(1 - 0.001, end);
+              const s4 = Math.min(1, end + 0.05);
+              
+              const t1 = Math.max(0, start - 0.1);
+              const t2 = Math.max(t1 + 0.001, start);
+              const t3 = Math.min(1 - 0.001, end);
+              const t4 = Math.min(1, end + 0.1);
+
               // Text enters from below, stays, then exits upwards
               const y = useTransform(
                 scrollYProgress,
-                [start - 0.1, start, end, end + 0.1],
+                [t1, t2, t3, t4],
                 [50, 0, 0, -50]
               );
               
               const opacity = useTransform(
                 scrollYProgress,
-                [start - 0.05, start + 0.05, end - 0.05, end + 0.05],
+                [s1, s2, s3, s4],
                 [0, 1, 1, 0]
               );
 
