@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export function ProductShowcase() {
-  const topProducts = siteConfig.products.slice(0, 8);
+  const allProducts = siteConfig.products;
 
   return (
     <section className="py-24 md:py-32 px-4 md:px-8 bg-ocean-white">
@@ -25,8 +25,8 @@ export function ProductShowcase() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-          {topProducts.map((product) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
+          {allProducts.map((product) => (
             <div 
               key={product.id}
               className="group flex flex-col gap-4"
