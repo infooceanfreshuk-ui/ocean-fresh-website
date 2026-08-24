@@ -1,82 +1,97 @@
 "use client";
 
-import { ArrowRight, ShieldCheck, Globe2, Building2, PackageCheck } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/Button";
 import Link from "next/link";
 import { companyInfo } from "@/config/company";
-import { useRef } from "react";
-import { ScrollVideo } from "./ScrollVideo";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const yText = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <>
-      {/* Pinned Video Container - Dedicated purely to the video scroll animation */}
-      <section ref={containerRef} className="h-[300vh] relative bg-black">
-        <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black">
-          <ScrollVideo src="/videos/hero-scroll.mp4" containerRef={containerRef} />
+    <section ref={containerRef} className="h-screen relative bg-ocean-deep overflow-hidden">
+      <motion.div style={{ scale }} className="absolute inset-0 w-full h-full">
+        {/* We can use an image or video here. Placeholder using standard color/gradient */}
+        <div className="absolute inset-0 bg-ocean-deep/80 z-10" />
+        <div 
+          className="absolute inset-0 z-0 opacity-50 bg-[url('https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=3270&auto=format&fit=crop')] bg-cover bg-center"
+        />
+      </motion.div>
+
+      <motion.div 
+        style={{ y: yText, opacity }}
+        className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center mt-12"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="px-6 py-2 bg-white/5 backdrop-blur-sm text-fresh-aqua rounded-full text-xs font-semibold uppercase tracking-[0.2em] mb-8 inline-block border border-white/10">
+            {companyInfo.legalName || "Ocean Fresh UK"}
+          </span>
+        </motion.div>
+
+        <motion.h1 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="text-6xl md:text-8xl lg:text-[11rem] font-medium tracking-tighter text-white leading-[0.85] max-w-[1200px]"
+        >
+          Premium Seafood. <br />
+          <span className="text-white/60">Global Reach.</span>
+        </motion.h1>
+
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-lg md:text-2xl text-ocean-white/70 max-w-2xl mt-12 font-light leading-relaxed"
+        >
+          We source the finest seafood and process it to perfection. Trusted by international buyers for uncompromising quality and traceability.
+        </motion.p>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center gap-6 mt-16 pointer-events-auto"
+        >
+          <Link href="/products">
+            <Button size="lg" className="rounded-none text-sm px-12 py-8 gap-3 bg-white text-ocean-deep hover:bg-marine-surface uppercase tracking-widest font-bold">
+              Explore Our Catch
+              <ArrowRight size={18} />
+            </Button>
+          </Link>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3"
+      >
+        <span className="text-white/50 text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+        <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
+          <motion.div 
+            animate={{ y: [0, 48] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+            className="w-full h-1/2 bg-white absolute top-0 left-0"
+          />
         </div>
-      </section>
-
-      {/* 
-        The Hero Text Section - Now completely below the video, acting as a full-screen section.
-        It appears only after the scroll animation is 100% complete.
-      */}
-      <section id="home" className="min-h-[100svh] w-full bg-ocean-white flex flex-col items-center justify-center py-20 px-4 md:px-8 text-center relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
-        <div className="container mx-auto max-w-5xl">
-          <div className="space-y-10 flex flex-col items-center">
-            
-            <span className="px-6 py-2.5 bg-marine-surface text-marine-teal rounded-full text-sm font-bold uppercase tracking-widest shadow-sm border border-marine-gray">
-              {companyInfo.legalName}
-            </span>
-            
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-text-primary leading-[1.1]">
-              Global Sourcing. <br />
-              UK <span className="text-ocean-blue">Processing</span>.
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-text-muted max-w-3xl leading-relaxed font-medium mx-auto">
-              We combine strong international seafood sourcing with advanced UK-based processing and professional packaging for retail and wholesale.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4 w-full sm:w-auto">
-              <Link href="/products" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full rounded-full text-lg px-8 py-7 gap-2 group shadow-xl">
-                  Explore Our Seafood
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              <Link href="/export" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="w-full rounded-full text-lg px-8 py-7 gap-2 group border-ocean-200 hover:bg-ocean-50 transition-colors text-ocean-900">
-                  Discover MAP
-                </Button>
-              </Link>
-            </div>
-
-            {/* Trust badges - Full width grid layout */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-marine-gray/50 mt-12 w-full">
-              {[
-                { icon: ShieldCheck, text: "BI 307 Approved" },
-                { icon: Globe2, text: "Global Sourcing" },
-                { icon: Building2, text: "UK Processing" },
-                { icon: PackageCheck, text: "Retail Ready" },
-              ].map((item, index) => (
-                <div 
-                  key={index} 
-                  className="flex flex-col items-center gap-4 text-center"
-                >
-                  <div className="bg-marine-surface p-4 rounded-2xl shadow-sm text-marine-teal border border-marine-gray">
-                    <item.icon size={28} />
-                  </div>
-                  <span className="text-base font-semibold text-text-muted">{item.text}</span>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </div>
-      </section>
-    </>
+      </motion.div>
+    </section>
   );
 }

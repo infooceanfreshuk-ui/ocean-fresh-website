@@ -1,58 +1,47 @@
-import { Button } from "./ui/Button";
-import { PackageCheck, ArrowRight, ShieldCheck } from "lucide-react";
-import Link from "next/link";
+import { siteConfig } from "../config/site";
+import { ShieldCheck } from "lucide-react";
 
 export function WhyChooseUs() {
   return (
-    <section id="quality" className="py-24 px-4 md:px-6">
-      <div className="container mx-auto">
-        <div className="bg-ocean-deep rounded-[3rem] overflow-hidden shadow-xl shadow-ocean-navy/50 relative">
-          <div className="grid lg:grid-cols-2 relative z-10">
+    <section id="quality" className="py-24 md:py-32 px-4 md:px-8 bg-marine-surface">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          
+          <div className="order-2 lg:order-1">
+            <h2 className="text-4xl md:text-5xl font-black text-ocean-deep tracking-tighter mb-6">
+              Uncompromising Quality.
+            </h2>
+            <p className="text-lg md:text-xl text-text-muted leading-relaxed mb-12 max-w-xl">
+              Our commitment to food safety is absolute. From the moment of catch to final retail packaging, every step of our supply chain is rigorously monitored and certified to the highest international standards.
+            </p>
             
-            {/* Left Content */}
-            <div className="p-10 md:p-16 lg:p-20 flex flex-col justify-center">
-              <span className="px-4 py-2 bg-ocean-navy/80 text-seafoam border border-ocean-blue rounded-full text-sm font-bold uppercase tracking-wider mb-6 w-fit">
-                Innovation
-              </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                Retail-Ready <br /> MAP Technology
-              </h2>
-              <p className="text-xl text-marine-gray/90 mb-12 leading-relaxed">
-                We are investing in Modified Atmosphere Packaging (MAP) technology to develop modern, retail-ready seafood products designed to support freshness, presentation, and efficient distribution.
-              </p>
-              
-              <div className="flex flex-col gap-4 mb-12">
-                <div className="flex items-center gap-3 bg-ocean-navy/50 p-4 rounded-xl border border-ocean-blue">
-                  <PackageCheck className="text-aqua shrink-0" size={24} />
-                  <span className="text-ocean-white font-medium">Controlled food-packaging gas mixture</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {siteConfig.certifications.map((cert, idx) => (
+                <div key={idx} className="bg-white p-6 rounded-2xl border border-marine-gray/50 shadow-sm flex items-center gap-4 group hover:border-ocean-blue hover:shadow-md transition-all">
+                  <div className="w-12 h-12 rounded-full bg-marine-surface flex items-center justify-center text-marine-teal group-hover:bg-ocean-deep group-hover:text-white transition-colors shrink-0">
+                    <ShieldCheck size={24} />
+                  </div>
+                  <span className="font-bold text-ocean-deep">{cert.name}</span>
                 </div>
-                <div className="flex items-center gap-3 bg-ocean-navy/50 p-4 rounded-xl border border-ocean-blue">
-                  <ShieldCheck className="text-aqua shrink-0" size={24} />
-                  <span className="text-ocean-white font-medium">Works alongside HACCP & hygiene controls</span>
-                </div>
-              </div>
-              
-              <Link href="/export">
-                <Button className="w-fit rounded-full bg-ocean-white text-ocean-deep hover:bg-white hover:text-text-primary gap-2 font-semibold px-8 py-6">
-                  Discover Our MAP Range
-                  <ArrowRight size={20} />
-                </Button>
-              </Link>
+              ))}
             </div>
-
-            {/* Right Image */}
-            <div className="relative h-64 lg:h-auto w-full bg-ocean-navy">
-              <div className="absolute inset-0 bg-gradient-to-tr from-ocean-deep to-transparent z-10"></div>
-              <div className="w-full h-full bg-[url('/images/products/salmon.jpg')] bg-cover bg-center mix-blend-overlay opacity-60"></div>
-              <div className="absolute inset-0 flex items-center justify-center z-20 text-ocean-white/90 text-center px-8">
-                <div>
-                  <h3 className="text-2xl font-bold mb-2">Modern Presentation</h3>
-                  <p className="max-w-xs mx-auto">Standardised packaged format suitable for modern retail environments.</p>
-                </div>
-              </div>
-            </div>
-            
           </div>
+
+          <div className="order-1 lg:order-2 relative">
+            <div className="aspect-square md:aspect-[4/5] bg-ocean-deep rounded-[3rem] overflow-hidden relative shadow-2xl">
+              <div className="absolute inset-0 bg-[url('/images/products/salmon.jpg')] bg-cover bg-center mix-blend-overlay opacity-50 hover:opacity-70 transition-opacity duration-700" />
+              
+              <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12">
+                <div className="bg-ocean-white/10 backdrop-blur-xl border border-white/20 p-6 md:p-8 rounded-3xl">
+                  <h3 className="text-2xl font-bold text-white mb-3">Retail-Ready MAP Technology</h3>
+                  <p className="text-ocean-white/90 leading-relaxed text-sm md:text-base">
+                    We utilize advanced Modified Atmosphere Packaging (MAP) technology to dramatically extend shelf life, maintain pristine presentation, and ensure absolute freshness for global retail markets.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </section>

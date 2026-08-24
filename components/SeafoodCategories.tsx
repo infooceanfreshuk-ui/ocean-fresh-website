@@ -2,67 +2,78 @@ import { siteConfig } from "../config/site";
 import { Button } from "./ui/Button";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function SeafoodCategories() {
+  // Helper to determine asymmetrical grid spanning
+  const getGridClass = (index: number) => {
+    switch (index) {
+      case 0: return "md:col-span-2 md:row-span-2 aspect-square md:aspect-auto h-[400px] md:h-[600px]"; // Big featured
+      case 1: return "md:col-span-1 md:row-span-1 aspect-square h-[400px] md:h-auto"; // Top right small
+      case 2: return "md:col-span-1 md:row-span-1 aspect-square h-[400px] md:h-auto"; // Bottom right small
+      case 3: return "md:col-span-1 md:row-span-2 aspect-square md:aspect-auto h-[400px] md:h-[600px]"; // Left tall
+      case 4: return "md:col-span-2 md:row-span-1 aspect-[2/1] h-[400px] md:h-auto"; // Right wide
+      case 5: return "md:col-span-2 md:row-span-1 aspect-[2/1] h-[400px] md:h-auto"; // Left wide
+      case 6: return "md:col-span-1 md:row-span-1 aspect-square h-[400px] md:h-auto"; // Right small
+      default: return "md:col-span-1 aspect-square h-[400px] md:h-auto";
+    }
+  };
+
   return (
-    <section id="categories" className="py-24 px-4 md:px-6 relative">
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold text-ocean-deep mb-4 tracking-tight">
-              Our Seafood
+    <section id="categories" className="py-24 md:py-32 bg-white relative">
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 border-b border-marine-gray pb-12">
+          <div className="max-w-3xl">
+            <h2 className="text-5xl md:text-7xl font-black text-ocean-deep tracking-tighter mb-6">
+              Our Premium <br/>Selections.
             </h2>
-            <p className="text-xl font-medium text-ocean-blue mb-2">
-              Fresh. Frozen. Trusted.
-            </p>
-            <p className="text-text-muted text-lg">
-              Explore our wide variety of premium catches, processed with care for the global market.
+            <p className="text-xl md:text-2xl font-medium text-text-muted leading-relaxed">
+              Explore our curated variety of global catches. Processed with exacting standards for the world's finest markets.
             </p>
           </div>
-          <Button variant="outline" className="rounded-full gap-2 group w-fit bg-transparent hover:bg-marine-surface text-ocean-deep border-ocean-blue/30 hover:border-ocean-blue/60 transition-colors">
-            View All Products
-            <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </Button>
+          <Link href="/products">
+            <Button size="lg" className="rounded-full px-8 py-7 text-lg font-bold bg-ocean-deep text-white hover:bg-ocean-navy transition-all">
+              View All Products
+            </Button>
+          </Link>
         </div>
 
-        <div className="flex flex-col gap-3 md:gap-4 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full auto-rows-fr">
           {siteConfig.categories.map((category, idx) => (
-            <div 
+            <Link 
+              href={`/products`}
               key={category.id} 
-              className="group relative bg-ocean-white border border-ocean-blue/15 rounded-2xl p-3 md:p-4 lg:p-5 flex items-center justify-between overflow-hidden shadow-sm hover:shadow-lg hover:shadow-ocean-blue/10 hover:border-ocean-blue/30 hover:-translate-y-1 transition-all duration-500 cursor-pointer"
+              className={`group relative overflow-hidden rounded-2xl block ${getGridClass(idx)}`}
             >
-              {/* Animated subtle gradient background on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-marine-surface/0 via-marine-surface/0 to-marine-gray/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-ocean-deep">
+                <Image 
+                  src={category.image} 
+                  alt={category.name} 
+                  fill 
+                  className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out" 
+                />
+              </div>
               
-              <div className="relative z-10 flex items-center gap-4 md:gap-6">
-                {/* Number */}
-                <div className="hidden sm:block text-3xl md:text-4xl font-black text-marine-gray group-hover:text-ocean-blue/30 transition-colors duration-500 w-12 md:w-16 tracking-tighter">
-                  {String(idx + 1).padStart(2, '0')}
-                </div>
-                
-                {/* Text Content */}
-                <div>
-                  <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-ocean-deep mb-1 group-hover:translate-x-2 transition-transform duration-500 ease-out">
-                    {category.name}
-                  </h3>
-                  <p className="text-marine-teal text-xs md:text-sm group-hover:translate-x-2 transition-transform duration-500 delay-75 ease-out line-clamp-1 md:line-clamp-none">
-                    {category.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative z-10 flex items-center gap-4 md:gap-6">
-                {/* Image */}
-                <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl bg-marine-surface relative overflow-hidden border-2 border-ocean-white shadow-sm group-hover:scale-105 group-hover:rotate-2 group-hover:shadow-md transition-all duration-700 ease-out shrink-0">
-                  <Image src={category.image} alt={category.name} fill className="object-cover" />
-                </div>
-                
-                {/* Arrow Icon */}
-                <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-marine-surface flex items-center justify-center text-aqua group-hover:bg-ocean-deep group-hover:text-ocean-white transition-colors duration-500 hidden md:flex flex-shrink-0 border border-ocean-blue/15 group-hover:border-ocean-deep group-hover:scale-110">
-                  <ArrowUpRight size={20} className="group-hover:rotate-12 transition-transform duration-300" />
+              {/* Gradient overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/90 via-ocean-deep/20 to-transparent pointer-events-none" />
+              
+              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                <div className="flex justify-between items-end">
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:-translate-y-2 transition-transform duration-500">
+                      {category.name}
+                    </h3>
+                    <p className="text-ocean-white/80 text-sm md:text-base max-w-[80%] opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-500 delay-75">
+                      {category.description}
+                    </p>
+                  </div>
+                  
+                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-ocean-deep transition-colors duration-500 shrink-0">
+                    <ArrowUpRight size={24} className="group-hover:rotate-12 transition-transform duration-300" />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

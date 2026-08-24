@@ -1,5 +1,4 @@
 import { ShieldCheck, Anchor, MapPin, Building } from "lucide-react";
-import { companyInfo } from "@/config/company";
 
 export function TrustBar() {
   const items = [
@@ -26,22 +25,18 @@ export function TrustBar() {
   ];
 
   return (
-    <section id="about" className="py-12 px-4 md:px-6 relative z-20 -mt-12">
-      <div className="container mx-auto">
-        <div className="bg-ocean-white rounded-3xl shadow-xl shadow-ocean-deep/5 p-8 md:p-10 border border-ocean-blue/15">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-4 lg:divide-x divide-marine-gray">
-            {items.map((item, index) => (
-              <div key={index} className="flex items-start gap-4 lg:px-6 first:pl-0 last:pr-0">
-                <div className="bg-marine-surface p-3 rounded-2xl text-aqua shrink-0">
-                  <item.icon size={28} strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-ocean-deep mb-1">{item.title}</h3>
-                  <p className="text-sm text-text-muted leading-relaxed">{item.description}</p>
-                </div>
+    <section className="bg-white py-16 md:py-24 border-b border-marine-gray/30">
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {items.map((item, index) => (
+            <div key={index} className="flex flex-col items-center text-center group cursor-default">
+              <div className="mb-6 p-4 rounded-full bg-marine-surface text-ocean-blue group-hover:bg-ocean-blue group-hover:text-white transition-colors duration-500">
+                <item.icon size={32} strokeWidth={1.5} />
               </div>
-            ))}
-          </div>
+              <h3 className="text-xl font-bold text-ocean-deep mb-3 tracking-tight">{item.title}</h3>
+              <p className="text-base text-text-muted font-medium max-w-[250px] leading-relaxed">{item.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

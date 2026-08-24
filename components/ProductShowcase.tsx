@@ -1,44 +1,67 @@
 import { siteConfig } from "../config/site";
-import { ShoppingCart, MessageSquare } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export function ProductShowcase() {
+  const topProducts = siteConfig.products.slice(0, 8);
+
   return (
-    <section className="py-24 px-4 md:px-6">
-      <div className="container mx-auto">
+    <section className="py-24 md:py-32 px-4 md:px-8 bg-ocean-white">
+      <div className="container mx-auto max-w-7xl">
         
-        <div className="flex items-center justify-center mb-16">
-          <div className="h-px bg-ocean-blue/20 flex-1 max-w-[100px] md:max-w-[200px]" />
-          <h2 className="text-3xl md:text-4xl font-bold text-ocean-deep mx-8 tracking-tight text-center">
-            Recommended For You
-          </h2>
-          <div className="h-px bg-ocean-blue/20 flex-1 max-w-[100px] md:max-w-[200px]" />
+        <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-black text-ocean-deep tracking-tighter mb-4">
+              Featured Export Catalog
+            </h2>
+            <p className="text-lg text-text-muted">
+              A selection of our highest-grade catches, processed for international wholesale.
+            </p>
+          </div>
+          <Link href="/products" className="hidden md:flex items-center gap-2 text-ocean-blue font-bold hover:text-ocean-deep transition-colors group">
+            View Full Catalog
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {siteConfig.products.map((product) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          {topProducts.map((product) => (
             <div 
               key={product.id}
-              className="bg-ocean-white rounded-3xl p-4 border border-ocean-blue/15 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+              className="group flex flex-col gap-4"
             >
-              <div className="aspect-square bg-marine-surface rounded-2xl mb-4 relative overflow-hidden flex items-center justify-center p-4">
-                <Image src={product.image} alt={product.name} fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-500" />
+              <div className="aspect-[4/3] bg-white rounded-2xl relative overflow-hidden border border-marine-gray/50 shadow-sm group-hover:shadow-md transition-all duration-500">
+                <Image 
+                  src={product.image} 
+                  alt={product.name} 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+                />
+                <div className="absolute inset-0 bg-ocean-deep/0 group-hover:bg-ocean-deep/10 transition-colors duration-500" />
               </div>
               
-              <div className="px-2 pb-2">
-                <h3 className="font-bold text-ocean-deep text-lg mb-1">{product.name}</h3>
-                {(product as any).specs && <p className="text-sm text-text-muted mb-4">{(product as any).specs}</p>}
-                
-                <div className="flex items-center justify-between mt-4">
-                  <span className="font-medium text-marine-teal text-sm">Export Quality</span>
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-marine-surface text-ocean-blue font-medium text-sm hover:bg-ocean-navy hover:text-white transition-colors">
-                    Request Quote
-                  </button>
+              <div className="px-1">
+                <div className="flex justify-between items-start gap-2">
+                  <h3 className="font-bold text-ocean-deep text-lg leading-tight group-hover:text-ocean-blue transition-colors">
+                    {product.name}
+                  </h3>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-marine-teal bg-marine-surface px-2 py-1 rounded-sm shrink-0">
+                    Export
+                  </span>
                 </div>
               </div>
             </div>
           ))}
         </div>
+        
+        <div className="mt-12 md:hidden flex justify-center">
+          <Link href="/products" className="flex items-center gap-2 text-ocean-blue font-bold hover:text-ocean-deep transition-colors group">
+            View Full Catalog
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
       </div>
     </section>
   );
