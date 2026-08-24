@@ -5,10 +5,10 @@ import { textReveal, staggerContainer } from "@/lib/animations";
 import Image from "next/image";
 
 const standards = [
-  { title: "HACCP Certified", desc: "Rigorous food safety management at every critical control point." },
-  { title: "ISO 22000", desc: "Internationally recognized standard for food safety." },
-  { title: "BRCGS Compliant", desc: "Meeting the highest global standards for food packaging and safety." },
-  { title: "Cold-Chain Integrity", desc: "Unbroken temperature control from vessel to destination." },
+  { title: "HACCP-Based Controls", desc: "Documented controls identifying hazards and establishing control measures at critical stages." },
+  { title: "BI 307 Approved", desc: "Birmingham City Council Full Approval for cold store, processing, re-wrapping and repackaging." },
+  { title: "Temperature Control", desc: "Chilled handling is maintained strictly throughout the entire seafood supply chain." },
+  { title: "Traceability", desc: "Controlled sourcing helps us manage products and suppliers effectively." },
 ];
 
 export function Quality() {
@@ -32,10 +32,14 @@ export function Quality() {
             
             <motion.h2 
               variants={textReveal}
-              className="text-4xl md:text-6xl font-light text-white leading-[1.1] tracking-tight mb-12"
+              className="text-4xl md:text-5xl font-light text-white leading-[1.1] tracking-tight mb-8"
             >
-              Certified excellence for the world's finest markets.
+              Food Safety at the Heart of Our Operation.
             </motion.h2>
+            
+            <motion.p variants={textReveal} className="text-white/70 text-lg leading-relaxed mb-12">
+              At Ocean Fresh, food safety is fundamental to the way we handle seafood. From sourcing and receiving through processing, chilled storage and packaging, our operations are built around controlled food-safety procedures. Our Birmingham operation is officially approved under Birmingham City Council approval number <strong className="text-white font-bold tracking-widest">BI 307</strong>.
+            </motion.p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12 mt-12">
               {standards.map((std, i) => (

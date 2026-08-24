@@ -5,11 +5,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
 const stages = [
-  { id: "01", title: "Sourcing", desc: "Directly sourced from trusted vessels in the Indian Ocean.", img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000&auto=format&fit=crop" },
-  { id: "02", title: "Quality Inspection", desc: "Rigorous HACCP compliant inspections upon arrival.", img: "https://images.unsplash.com/photo-1589923188900-85dae523342b?q=80&w=2000&auto=format&fit=crop" },
-  { id: "03", title: "Processing", desc: "Precision cleaning and filleting in our UK facilities.", img: "https://images.unsplash.com/photo-1605333396914-2323d5006b07?q=80&w=2000&auto=format&fit=crop" },
-  { id: "04", title: "Packaging", desc: "Sealed using MAP to lock in absolute freshness.", img: "https://images.unsplash.com/photo-1587311925979-3fa7d05fb5dc?q=80&w=2000&auto=format&fit=crop" },
-  { id: "05", title: "Export", desc: "Dispatched via advanced cold-chain logistics globally.", img: "https://images.unsplash.com/photo-1494412519320-ce600c92d536?q=80&w=2000&auto=format&fit=crop" },
+  { id: "01", title: "Preparation", desc: "Fresh seafood is selected and prepared under controlled hygiene and temperature conditions.", img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000&auto=format&fit=crop" },
+  { id: "02", title: "Packaging System", desc: "The seafood is placed into a suitable food-grade tray and packaging system.", img: "https://images.unsplash.com/photo-1589923188900-85dae523342b?q=80&w=2000&auto=format&fit=crop" },
+  { id: "03", title: "Gas Flushing", desc: "The air inside the package is replaced with a controlled food-packaging gas mixture selected for the product.", img: "https://images.unsplash.com/photo-1605333396914-2323d5006b07?q=80&w=2000&auto=format&fit=crop" },
+  { id: "04", title: "Sealing", desc: "The tray is heat-sealed to create a controlled internal atmosphere.", img: "https://images.unsplash.com/photo-1587311925979-3fa7d05fb5dc?q=80&w=2000&auto=format&fit=crop" },
+  { id: "05", title: "Chilled Distribution", desc: "The finished product remains chilled throughout storage and distribution to maintain quality and presentation.", img: "https://images.unsplash.com/photo-1494412519320-ce600c92d536?q=80&w=2000&auto=format&fit=crop" },
 ];
 
 export function Processing() {

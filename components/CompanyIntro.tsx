@@ -28,13 +28,17 @@ export function CompanyIntro() {
             Bridging the gap between the <span className="font-serif italic text-ocean-blue">ocean</span> and the <span className="font-serif italic text-ocean-blue">market</span>.
           </motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 mt-20">
-            <motion.div variants={textReveal} className="text-xl md:text-2xl text-ocean-deep/70 font-light leading-relaxed">
-              At {companyInfo.brandName}, we orchestrate a seamless global supply chain. By sourcing the finest catches directly from the rich waters of India and Sri Lanka, we ensure unparalleled freshness and quality at the source.
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 mt-20">
+            <motion.div variants={textReveal} className="text-lg md:text-xl text-ocean-deep/70 font-light leading-relaxed">
+              {companyInfo.legalName} is a growing UK seafood importer, processor, wholesaler and retailer established in 2024. What began as a home-delivery service sourcing fresh fish from the London market has developed into an international seafood sourcing and UK-based processing operation, with established supplier relationships in India and Sri Lanka.
             </motion.div>
             
-            <motion.div variants={textReveal} className="text-xl md:text-2xl text-ocean-deep/70 font-light leading-relaxed">
-              Our advanced UK-based processing facilities then elevate these raw ingredients, delivering retail-ready and wholesale seafood solutions to the world's most demanding markets.
+            <motion.div variants={textReveal} className="text-lg md:text-xl text-ocean-deep/70 font-light leading-relaxed">
+              Our Birmingham operation combines seafood sourcing, processing, cold storage and professional packaging, supported by HACCP-based food-safety controls and Birmingham City Council full approval <strong className="font-bold text-ocean-deep">(BI 307)</strong>.
+            </motion.div>
+
+            <motion.div variants={textReveal} className="text-lg md:text-xl text-ocean-deep/70 font-light leading-relaxed">
+              We are now investing in Modified Atmosphere Packaging (MAP) technology to develop modern, retail-ready seafood products designed to support freshness, presentation and efficient distribution. By combining strong food-safety management with modern packaging technology, Ocean Fresh is building the foundations for the next stage of its growth across the UK seafood market.
             </motion.div>
           </div>
         </motion.div>
