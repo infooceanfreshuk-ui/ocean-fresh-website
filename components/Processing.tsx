@@ -32,7 +32,7 @@ export function Processing() {
             const end = (i + 1) / stages.length;
             const opacity = useTransform(
               scrollYProgress,
-              [Math.max(0, start - 0.05), start, end, Math.min(1, end + 0.05)],
+              [start - 0.05, start, end, end + 0.05],
               [0, 1, 1, 0]
             );
             const scale = useTransform(
@@ -83,8 +83,8 @@ export function Processing() {
               return (
                 <motion.div 
                   key={stage.id}
-                  style={{ opacity, y, pointerEvents: opacity.get() > 0.5 ? "auto" : "none" }}
-                  className="absolute inset-0 flex flex-col justify-center"
+                  style={{ opacity, y }}
+                  className="absolute inset-0 flex flex-col justify-center pointer-events-none"
                 >
                   <div className="text-fresh-aqua font-serif italic text-6xl md:text-8xl mb-8 opacity-50">
                     {stage.id}
