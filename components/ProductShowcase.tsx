@@ -25,20 +25,20 @@ export function ProductShowcase() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8">
           {allProducts.map((product) => (
             <div 
               key={product.id}
               className="group flex flex-col gap-4"
             >
-              <div className="aspect-[4/3] bg-white rounded-2xl relative overflow-hidden border border-marine-gray/50 shadow-sm group-hover:shadow-md transition-all duration-500">
+              <div className="aspect-square bg-black rounded-2xl relative overflow-hidden border border-marine-gray/50 shadow-sm group-hover:shadow-md transition-all duration-500">
                 <Image 
                   src={product.image} 
                   alt={product.name} 
                   fill 
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+                  className="object-contain opacity-95 group-hover:scale-105 group-hover:opacity-100 transition-transform duration-700 ease-out" 
                 />
-                <div className="absolute inset-0 bg-ocean-deep/0 group-hover:bg-ocean-deep/10 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-ocean-deep/0 group-hover:bg-ocean-deep/10 transition-colors duration-500 pointer-events-none" />
               </div>
               
               <div className="px-1">

@@ -41,14 +41,16 @@ export function Navbar() {
         <div className="container mx-auto max-w-[1440px] px-6 lg:px-12 flex items-center justify-between">
           
           {/* Logo */}
-          <Link href="/" className="relative z-50 flex items-center h-10 w-48 group">
+          <Link href="/" className="relative z-50 flex items-center h-20 md:h-24 w-64 md:w-72 group">
             <Image
-              src="/images/logo.jpeg"
+              src="/images/logo-transparent.png"
               alt="Ocean Fresh"
               fill
-              className={`object-contain transition-all duration-700 origin-left ${
-                isScrolled ? "scale-90" : "scale-100"
-              } mix-blend-multiply`}
+              className={`object-contain transition-all duration-500 origin-left ${
+                isScrolled 
+                  ? "scale-90" 
+                  : "scale-100 brightness-0 invert"
+              }`}
               priority
             />
           </Link>

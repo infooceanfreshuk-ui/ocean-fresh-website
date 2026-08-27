@@ -2,27 +2,27 @@
 
 @theme {
   /* Primary */
-  --color-ocean-deep: #062B3A;
-  --color-ocean-navy: #073B4C;
-  --color-ocean-blue: #0B5D73;
+  --color-ocean-deep: #0A0F1C;
+  --color-ocean-navy: #111827;
+  --color-ocean-blue: #2563EB;
   
   /* Secondary */
-  --color-marine-teal: #0F766E;
-  --color-deep-teal: #115E59;
-  --color-aqua: #22A6B3;
+  --color-marine-teal: #0891B2;
+  --color-deep-teal: #164E63;
+  --color-aqua: #06B6D4;
   
   /* Accent */
-  --color-fresh-aqua: #38C6D9;
-  --color-seafoam: #8FE3D4;
+  --color-fresh-aqua: #0EA5E9;
+  --color-seafoam: #7DD3FC;
   
   /* Neutral / Surface */
-  --color-ocean-white: #F4FAFA;
-  --color-marine-surface: #EAF5F6;
-  --color-marine-gray: #D7E7E9;
+  --color-ocean-white: #FFFFFF;
+  --color-marine-surface: #F8FAFC;
+  --color-marine-gray: #E2E8F0;
   
   /* Text */
-  --color-text-primary: #082C36;
-  --color-text-muted: #5B747A;
+  --color-text-primary: #0F172A;
+  --color-text-muted: #475569;
   
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }

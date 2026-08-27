@@ -30,7 +30,7 @@ export default function ProductsPage() {
           </motion.p>
         </motion.div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12">
           {allProducts.map((product, i) => (
             <motion.div 
               key={product.id}
@@ -40,12 +40,12 @@ export default function ProductsPage() {
               transition={{ duration: 0.6, delay: (i % 4) * 0.1 }}
               className="group flex flex-col"
             >
-              <div className="aspect-[4/5] bg-ocean-deep rounded-none relative overflow-hidden mb-6">
+              <div className="aspect-square bg-black rounded-lg relative overflow-hidden mb-6 border border-ocean-deep/10 shadow-sm group-hover:shadow-md transition-all duration-500">
                 <Image 
                   src={product.image} 
                   alt={product.name} 
                   fill 
-                  className="object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out" 
+                  className="object-contain opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out" 
                 />
               </div>
               

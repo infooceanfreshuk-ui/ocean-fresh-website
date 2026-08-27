@@ -1,120 +1,82 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { textReveal, staggerContainer } from "@/lib/animations";
 
 const stages = [
-  { id: "01", title: "Preparation", desc: "Fresh seafood is selected and prepared under controlled hygiene and temperature conditions.", img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2000&auto=format&fit=crop" },
-  { id: "02", title: "Packaging System", desc: "The seafood is placed into a suitable food-grade tray and packaging system.", img: "https://images.unsplash.com/photo-1589923188900-85dae523342b?q=80&w=2000&auto=format&fit=crop" },
-  { id: "03", title: "Gas Flushing", desc: "The air inside the package is replaced with a controlled food-packaging gas mixture selected for the product.", img: "https://images.unsplash.com/photo-1605333396914-2323d5006b07?q=80&w=2000&auto=format&fit=crop" },
-  { id: "04", title: "Sealing", desc: "The tray is heat-sealed to create a controlled internal atmosphere.", img: "https://images.unsplash.com/photo-1587311925979-3fa7d05fb5dc?q=80&w=2000&auto=format&fit=crop" },
-  { id: "05", title: "Chilled Distribution", desc: "The finished product remains chilled throughout storage and distribution to maintain quality and presentation.", img: "https://images.unsplash.com/photo-1494412519320-ce600c92d536?q=80&w=2000&auto=format&fit=crop" },
+  { id: "01", title: "Preparation", desc: "Fresh seafood is selected and prepared under controlled hygiene and temperature conditions.", img: "/images/process/preparation.png" },
+  { id: "02", title: "Packaging System", desc: "The seafood is placed into a suitable food-grade tray and packaging system.", img: "/images/process/packaging-system.png" },
+  { id: "03", title: "Gas Flushing", desc: "The air inside the package is replaced with a controlled food-packaging gas mixture selected for the product.", img: "/images/process/gas-flushing.png" },
+  { id: "04", title: "Sealing", desc: "The tray is heat-sealed to create a controlled internal atmosphere.", img: "/images/process/sealing.png" },
+  { id: "05", title: "Chilled Distribution", desc: "The finished product remains chilled throughout storage and distribution to maintain quality and presentation.", img: "/images/process/chilled-distribution.png" },
 ];
 
 export function Processing() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
   return (
-    <section ref={containerRef} className="bg-ocean-deep relative h-[500vh]">
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col md:flex-row">
+    <section className="bg-ocean-white py-32 relative overflow-hidden">
+      <div className="container mx-auto px-6 lg:px-12 max-w-[1440px]">
         
-        {/* Left Side: Images that transition based on scroll */}
-        <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden">
-          {stages.map((stage, i) => {
-            // Calculate opacity for each image based on scroll progress
-            const start = i / stages.length;
-            const end = (i + 1) / stages.length;
-            // Ensure strictly increasing values for Framer Motion / WAAPI
-            const s1 = Math.max(0, start - 0.05);
-            const s2 = Math.max(s1 + 0.001, start);
-            const s3 = Math.min(1 - 0.001, end);
-            const s4 = Math.min(1, end + 0.05);
-
-            const opacity = useTransform(
-              scrollYProgress,
-              [s1, s2, s3, s4],
-              [0, 1, 1, 0]
-            );
-            const scale = useTransform(
-              scrollYProgress,
-              [start, Math.max(start + 0.001, end)],
-              [1, 1.1]
-            );
-
-            return (
-              <motion.div 
-                key={stage.id} 
-                style={{ opacity, scale }}
-                className="absolute inset-0 w-full h-full"
-              >
-                <Image src={stage.img} alt={stage.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-ocean-deep/30 mix-blend-multiply" />
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Right Side: Text that transitions based on scroll */}
-        <div className="w-full md:w-1/2 h-1/2 md:h-full bg-ocean-white flex items-center justify-center p-8 lg:p-20 relative">
-          <div className="absolute top-12 left-12">
-            <span className="text-ocean-deep/50 text-xs tracking-[0.2em] font-bold uppercase">
+        <motion.div 
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center mb-24 max-w-3xl mx-auto"
+        >
+          <motion.div variants={textReveal}>
+            <span className="text-ocean-blue text-sm tracking-[0.2em] font-bold uppercase block mb-4">
               The Process
             </span>
-          </div>
+          </motion.div>
+          <motion.h2 variants={textReveal} className="text-4xl md:text-6xl font-light text-ocean-deep tracking-tight">
+            How We Ensure Perfection
+          </motion.h2>
+        </motion.div>
 
-          <div className="relative w-full max-w-lg">
-            {stages.map((stage, i) => {
-              const start = i / stages.length;
-              const end = (i + 1) / stages.length;
-              
-              const s1 = Math.max(0, start - 0.05);
-              const s2 = Math.max(s1 + 0.001, start);
-              const s3 = Math.min(1 - 0.001, end);
-              const s4 = Math.min(1, end + 0.05);
-              
-              const t1 = Math.max(0, start - 0.1);
-              const t2 = Math.max(t1 + 0.001, start);
-              const t3 = Math.min(1 - 0.001, end);
-              const t4 = Math.min(1, end + 0.1);
-
-              // Text enters from below, stays, then exits upwards
-              const y = useTransform(
-                scrollYProgress,
-                [t1, t2, t3, t4],
-                [50, 0, 0, -50]
-              );
-              
-              const opacity = useTransform(
-                scrollYProgress,
-                [s1, s2, s3, s4],
-                [0, 1, 1, 0]
-              );
-
-              return (
+        <div className="flex flex-col gap-24 lg:gap-32">
+          {stages.map((stage, i) => (
+            <div 
+              key={stage.id} 
+              className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-24 ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+            >
+              <div className="w-full lg:w-1/2 relative">
                 <motion.div 
-                  key={stage.id}
-                  style={{ opacity, y }}
-                  className="absolute inset-0 flex flex-col justify-center pointer-events-none"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-2xl group"
                 >
-                  <div className="text-fresh-aqua font-serif italic text-6xl md:text-8xl mb-8 opacity-50">
-                    {stage.id}
-                  </div>
-                  <h3 className="text-4xl md:text-6xl font-light text-ocean-deep mb-6 tracking-tight">
-                    {stage.title}
-                  </h3>
-                  <p className="text-lg md:text-2xl text-ocean-deep/70 font-light leading-relaxed">
-                    {stage.desc}
-                  </p>
+                  <Image 
+                    src={stage.img} 
+                    alt={stage.title} 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" 
+                  />
+                  <div className="absolute inset-0 bg-ocean-deep/10 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-1000" />
                 </motion.div>
-              );
-            })}
-          </div>
+              </div>
+              
+              <motion.div 
+                initial={{ opacity: 0, x: i % 2 !== 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="w-full lg:w-1/2 flex flex-col justify-center"
+              >
+                <div className="text-ocean-navy text-6xl md:text-8xl font-serif italic mb-4 opacity-10">
+                  {stage.id}
+                </div>
+                <h3 className="text-3xl md:text-5xl font-light text-ocean-deep mb-6 tracking-tight">
+                  {stage.title}
+                </h3>
+                <p className="text-lg md:text-xl text-text-muted leading-relaxed max-w-lg">
+                  {stage.desc}
+                </p>
+              </motion.div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

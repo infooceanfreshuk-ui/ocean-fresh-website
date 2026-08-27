@@ -13,7 +13,7 @@ const standards = [
 
 export function Quality() {
   return (
-    <section className="bg-ocean-deep py-32 px-6 lg:px-12 relative overflow-hidden text-ocean-white">
+    <section className="bg-ocean-navy py-32 px-6 lg:px-12 relative overflow-hidden text-ocean-white">
       <div className="container mx-auto max-w-[1440px]">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           
@@ -25,7 +25,7 @@ export function Quality() {
             className="w-full lg:w-1/2"
           >
             <motion.div variants={textReveal} className="mb-8">
-              <span className="text-white/50 text-sm tracking-[0.2em] font-medium uppercase">
+              <span className="text-ocean-blue text-sm tracking-[0.2em] font-bold uppercase">
                 Uncompromising Quality
               </span>
             </motion.div>
@@ -37,9 +37,47 @@ export function Quality() {
               Food Safety at the Heart of Our Operation.
             </motion.h2>
             
-            <motion.p variants={textReveal} className="text-white/70 text-lg leading-relaxed mb-12">
+            <motion.p variants={textReveal} className="text-marine-gray text-lg leading-relaxed mb-10">
               At Ocean Fresh, food safety is fundamental to the way we handle seafood. From sourcing and receiving through processing, chilled storage and packaging, our operations are built around controlled food-safety procedures. Our Birmingham operation is officially approved under Birmingham City Council approval number <strong className="text-white font-bold tracking-widest">BI 307</strong>.
             </motion.p>
+            
+            <motion.div variants={textReveal} className="flex flex-col sm:flex-row gap-10 mb-12 pt-8 border-t border-white/10">
+              {/* HACCP Credential */}
+              <div className="flex items-start gap-5 w-full">
+                <div className="relative w-16 h-16 flex-shrink-0 bg-ocean-navy border border-white/20 rounded-full flex flex-col items-center justify-center shadow-[0_0_15px_rgba(37,99,235,0.2)]">
+                  <span className="text-white font-black text-[13px] tracking-wider leading-none mt-1">HACCP</span>
+                  <span className="text-ocean-blue font-bold text-[5px] tracking-[0.2em] uppercase mt-0.5">Certified</span>
+                  <div className="w-6 h-[1px] bg-ocean-blue/50 my-1"></div>
+                  <svg className="w-3.5 h-3.5 text-ocean-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="pt-1">
+                  <h4 className="text-white font-bold tracking-widest text-sm mb-1">HACCP</h4>
+                  <p className="text-ocean-blue text-xs font-semibold tracking-widest uppercase mb-1.5">Certified Food Safety</p>
+                  <p className="text-white/60 text-xs leading-relaxed">Hazard Analysis Critical Control Point</p>
+                </div>
+              </div>
+
+              {/* FSA Rating Credential */}
+              <div className="flex items-start gap-5 w-full">
+                <div className="relative w-16 h-16 flex-shrink-0 bg-[#00A859] rounded-md flex flex-col items-center justify-between shadow-lg overflow-hidden border border-[#00A859]">
+                  <div className="bg-black w-full text-center py-1">
+                    <span className="text-[#00A859] text-[6px] font-black tracking-widest block leading-none">FOOD HYGIENE RATING</span>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center w-full bg-[#00A859]">
+                    <div className="bg-black rounded-full w-8 h-8 flex items-center justify-center shadow-inner">
+                      <span className="text-[#00A859] font-black text-xl leading-none">5</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="pt-1">
+                  <h4 className="text-white font-bold tracking-widest text-sm mb-1 uppercase">Food Hygiene Rating</h4>
+                  <p className="text-ocean-blue font-bold text-sm tracking-widest uppercase mb-1.5">5 — Very Good</p>
+                  <p className="text-white/60 text-xs leading-relaxed">Recognised for very good food hygiene standards.</p>
+                </div>
+              </div>
+            </motion.div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12 mt-12">
               {standards.map((std, i) => (
@@ -57,15 +95,15 @@ export function Quality() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-square md:aspect-[4/5] w-full max-w-lg mx-auto"
+              className="relative aspect-square md:aspect-[4/5] w-full max-w-lg mx-auto rounded-3xl overflow-hidden shadow-2xl"
             >
               <Image 
-                src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?q=80&w=2000&auto=format&fit=crop" 
-                alt="Quality Inspection" 
+                src="https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?q=80&w=2000&auto=format&fit=crop" 
+                alt="Seafood Quality Inspection on Ice" 
                 fill 
-                className="object-cover rounded-none filter grayscale hover:grayscale-0 transition-all duration-1000"
+                className="object-cover hover:scale-105 transition-transform duration-1000 ease-out"
               />
-              <div className="absolute inset-0 border border-white/20 m-4 pointer-events-none" />
+              <div className="absolute inset-0 bg-ocean-navy/10 mix-blend-overlay pointer-events-none" />
             </motion.div>
           </div>
           
