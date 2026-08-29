@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/Button";
 import Link from "next/link";
+import Image from "next/image";
 import { companyInfo } from "@/config/company";
 
 export function Hero() {
@@ -80,18 +81,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-12 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 pointer-events-auto w-full px-4"
+          className="mt-12 md:mt-16 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 md:gap-6 pointer-events-auto w-full px-4"
         >
           {/* HACCP Hero Credential */}
           <div className="flex items-center gap-4 bg-ocean-deep/70 backdrop-blur-md px-5 py-3.5 rounded-2xl border border-white/10 w-full sm:w-auto justify-center sm:justify-start shadow-xl">
-            <div className="relative w-12 h-12 flex-shrink-0 bg-ocean-navy border border-white/20 rounded-full flex flex-col items-center justify-center shadow-[0_0_15px_rgba(37,99,235,0.3)]">
-              <span className="text-white font-black text-[10px] tracking-wider leading-none mt-1">HACCP</span>
-              <span className="text-ocean-blue font-bold text-[4px] tracking-[0.2em] uppercase mt-0.5">Certified</span>
-              <div className="w-5 h-[1px] bg-ocean-blue/50 my-1"></div>
-              <svg className="w-3 h-3 text-ocean-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+            <Image
+              src="/images/HACCP.jpeg"
+              alt="HACCP Certified"
+              width={48}
+              height={48}
+              className="object-contain flex-shrink-0 rounded-md bg-white p-1"
+            />
             <div className="text-left">
               <p className="text-white font-bold tracking-widest text-xs uppercase leading-tight mb-0.5">HACCP</p>
               <p className="text-ocean-blue font-semibold text-[10px] tracking-wider uppercase">Certified Food Safety</p>
@@ -100,19 +100,31 @@ export function Hero() {
 
           {/* FSA Rating Hero Credential */}
           <div className="flex items-center gap-4 bg-ocean-deep/70 backdrop-blur-md px-5 py-3.5 rounded-2xl border border-white/10 w-full sm:w-auto justify-center sm:justify-start shadow-xl">
-            <div className="relative w-12 h-12 flex-shrink-0 bg-[#00A859] rounded-md flex flex-col items-center justify-between shadow-lg overflow-hidden border border-[#00A859]">
-              <div className="bg-black w-full text-center py-1">
-                <span className="text-[#00A859] text-[5px] font-black tracking-widest block leading-none">FOOD HYGIENE RATING</span>
-              </div>
-              <div className="flex-1 flex items-center justify-center w-full bg-[#00A859]">
-                <div className="bg-black rounded-full w-6 h-6 flex items-center justify-center shadow-inner border border-black/20">
-                  <span className="text-[#00A859] font-black text-base leading-none">5</span>
-                </div>
-              </div>
-            </div>
+            <Image 
+              src="/images/new-rating.jpeg" 
+              alt="Food Hygiene Rating 5" 
+              width={96} 
+              height={48} 
+              className="object-contain flex-shrink-0"
+            />
             <div className="text-left">
               <p className="text-white font-bold tracking-widest text-xs uppercase leading-tight mb-0.5">Food Hygiene Rating</p>
               <p className="text-[#00A859] font-black text-[10px] tracking-wider uppercase">5 — Very Good</p>
+            </div>
+          </div>
+
+          {/* BI 307 Hero Credential */}
+          <div className="flex items-center gap-4 bg-ocean-deep/70 backdrop-blur-md px-5 py-3.5 rounded-2xl border border-white/10 w-full sm:w-auto justify-center sm:justify-start shadow-xl">
+            <Image
+              src="/images/UKBI307.jpeg"
+              alt="UK BI 307 Approved"
+              width={48}
+              height={48}
+              className="object-contain flex-shrink-0 rounded-md bg-white p-1"
+            />
+            <div className="text-left">
+              <p className="text-white font-bold tracking-widest text-xs uppercase leading-tight mb-0.5">UK BI 307</p>
+              <p className="text-ocean-blue font-semibold text-[10px] tracking-wider uppercase">City Council Approved</p>
             </div>
           </div>
         </motion.div>

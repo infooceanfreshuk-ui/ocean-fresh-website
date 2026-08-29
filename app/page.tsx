@@ -1,6 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { CompanyIntro } from "@/components/CompanyIntro";
-import { GlobalScale } from "@/components/GlobalScale";
+
 import { SeafoodStory } from "@/components/SeafoodStory";
 import { ProductShowcase } from "@/components/ProductShowcase";
 import { Processing } from "@/components/Processing";
@@ -14,7 +14,7 @@ export default function Home() {
       <div className="w-full h-full relative z-20 bg-ocean-white">
         <div id="about">
           <CompanyIntro />
-          <GlobalScale />
+
         </div>
         <div id="products">
           <SeafoodStory />
