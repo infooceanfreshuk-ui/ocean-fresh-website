@@ -76,58 +76,7 @@ export function Hero() {
           </Link>
         </motion.div>
 
-        {/* Prominent Hero Credentials */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-12 md:mt-16 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 md:gap-6 pointer-events-auto w-full px-4"
-        >
-          {/* HACCP Hero Credential */}
-          <div className="flex items-center gap-4 bg-ocean-deep/70 backdrop-blur-md px-5 py-3.5 rounded-2xl border border-white/10 w-full sm:w-auto justify-center sm:justify-start shadow-xl">
-            <Image
-              src="/images/HACCP.jpeg"
-              alt="HACCP Certified"
-              width={48}
-              height={48}
-              className="object-contain flex-shrink-0 rounded-md bg-white p-1"
-            />
-            <div className="text-left">
-              <p className="text-white font-bold tracking-widest text-xs uppercase leading-tight mb-0.5">HACCP</p>
-              <p className="text-ocean-blue font-semibold text-[10px] tracking-wider uppercase">Certified Food Safety</p>
-            </div>
-          </div>
 
-          {/* FSA Rating Hero Credential */}
-          <div className="flex items-center gap-4 bg-ocean-deep/70 backdrop-blur-md px-5 py-3.5 rounded-2xl border border-white/10 w-full sm:w-auto justify-center sm:justify-start shadow-xl">
-            <Image 
-              src="/images/new-rating.jpeg" 
-              alt="Food Hygiene Rating 5" 
-              width={96} 
-              height={48} 
-              className="object-contain flex-shrink-0"
-            />
-            <div className="text-left">
-              <p className="text-white font-bold tracking-widest text-xs uppercase leading-tight mb-0.5">Food Hygiene Rating</p>
-              <p className="text-[#00A859] font-black text-[10px] tracking-wider uppercase">5 — Very Good</p>
-            </div>
-          </div>
-
-          {/* BI 307 Hero Credential */}
-          <div className="flex items-center gap-4 bg-ocean-deep/70 backdrop-blur-md px-5 py-3.5 rounded-2xl border border-white/10 w-full sm:w-auto justify-center sm:justify-start shadow-xl">
-            <Image
-              src="/images/UKBI307.jpeg"
-              alt="UK BI 307 Approved"
-              width={48}
-              height={48}
-              className="object-contain flex-shrink-0 rounded-md bg-white p-1"
-            />
-            <div className="text-left">
-              <p className="text-white font-bold tracking-widest text-xs uppercase leading-tight mb-0.5">UK BI 307</p>
-              <p className="text-ocean-blue font-semibold text-[10px] tracking-wider uppercase">City Council Approved</p>
-            </div>
-          </div>
-        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}

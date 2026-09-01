@@ -51,11 +51,6 @@ export function Quality() {
                   height={64}
                   className="object-contain flex-shrink-0 rounded-md bg-white p-1"
                 />
-                <div className="pt-1">
-                  <h4 className="text-white font-bold tracking-widest text-sm mb-1">HACCP</h4>
-                  <p className="text-ocean-blue text-xs font-semibold tracking-widest uppercase mb-1.5">Certified Food Safety</p>
-                  <p className="text-white/60 text-xs leading-relaxed">Hazard Analysis Critical Control Point</p>
-                </div>
               </div>
 
               {/* FSA Rating Credential */}
@@ -67,15 +62,10 @@ export function Quality() {
                   height={60} 
                   className="object-contain flex-shrink-0"
                 />
-                <div className="pt-1">
-                  <h4 className="text-white font-bold tracking-widest text-sm mb-1 uppercase">Food Hygiene Rating</h4>
-                  <p className="text-ocean-blue font-bold text-sm tracking-widest uppercase mb-1.5">5 — Very Good</p>
-                  <p className="text-white/60 text-xs leading-relaxed">Recognised for very good food hygiene standards.</p>
-                </div>
               </div>
 
               {/* BI 307 Credential */}
-              <div className="flex items-start gap-5 w-full sm:w-auto">
+              <div className="flex items-center gap-5 w-full sm:w-auto">
                 <Image
                   src="/images/UKBI307.jpeg"
                   alt="UK BI 307 Approved"
@@ -84,9 +74,7 @@ export function Quality() {
                   className="object-contain flex-shrink-0 rounded-md bg-white p-1"
                 />
                 <div className="pt-1">
-                  <h4 className="text-white font-bold tracking-widest text-sm mb-1 uppercase">UK BI 307</h4>
-                  <p className="text-ocean-blue font-bold text-sm tracking-widest uppercase mb-1.5">Approved</p>
-                  <p className="text-white/60 text-xs leading-relaxed">Birmingham City Council Approval.</p>
+                  <h4 className="text-white/60 text-xs leading-relaxed uppercase tracking-widest font-semibold">Birmingham City Council Approved</h4>
                 </div>
               </div>
             </motion.div>

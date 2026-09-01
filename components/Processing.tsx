@@ -10,7 +10,7 @@ const stages = [
   { id: "03", title: "Gas Flushing", desc: "The air inside the package is replaced with a controlled food-packaging gas mixture selected for the product.", img: "/images/process/gas-flushing.png" },
   { id: "04", title: "Sealing", desc: "The tray is heat-sealed to create a controlled internal atmosphere.", img: "/images/process/sealing.png" },
   { id: "05", title: "Chilled Distribution", desc: "The finished product remains chilled throughout storage and distribution to maintain quality and presentation.", img: "/images/process/chilled-distribution.png" },
-  { id: "06", title: "Final Product", desc: "The finished seafood is presented in its final sealed packaging, ready for dispatch while maintaining product quality, freshness, and presentation.", img: "/images/process/final-product-v3.jpg" },
+  { id: "06", title: "Final Product", desc: "The finished seafood is presented in its final sealed packaging, ready for dispatch while maintaining product quality, freshness, and presentation.", img: "/images/process/final-product-v5.jpg" },
 ];
 
 export function Processing() {

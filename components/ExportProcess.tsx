@@ -27,6 +27,11 @@ export function ExportProcess() {
       title: "Global Export",
       description: "Dispatched via advanced cold-chain logistics to international retail markets.",
     },
+    {
+      image: "/images/final-product.jpeg",
+      title: "Final Product",
+      description: "Ready for retail shelves, clearly labeled with quality assurances.",
+    }
   ];
 
   return (
@@ -44,16 +49,20 @@ export function ExportProcess() {
 
         <div className="relative">
           {/* Connecting Line (Desktop) */}
-          <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-marine-gray/50" />
+          <div className="hidden lg:block absolute top-12 left-[8%] right-[8%] h-[2px] bg-marine-gray/50" />
           
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-12 relative z-10">
             {steps.map((step, idx) => (
               <div key={idx} className="flex flex-col items-center text-center group">
-                <div className="w-24 h-24 rounded-full bg-marine-surface border-4 border-white shadow-xl flex items-center justify-center text-ocean-blue group-hover:bg-ocean-blue group-hover:text-white group-hover:scale-110 transition-all duration-500 mb-6 relative">
-                  <step.icon size={32} strokeWidth={1.5} />
+                <div className="w-24 h-24 rounded-full bg-marine-surface border-4 border-white shadow-xl flex items-center justify-center text-ocean-blue group-hover:bg-ocean-blue group-hover:text-white group-hover:scale-110 transition-all duration-500 mb-6 relative overflow-hidden">
+                  {step.icon ? (
+                    <step.icon size={32} strokeWidth={1.5} />
+                  ) : (
+                    <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
+                  )}
                   
                   {/* Step Number Badge */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-ocean-deep text-white text-xs font-bold flex items-center justify-center border-2 border-white shadow-sm">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-ocean-deep text-white text-xs font-bold flex items-center justify-center border-2 border-white shadow-sm z-10">
                     {idx + 1}
                   </div>
                 </div>

@@ -29,7 +29,7 @@ export function WhyChooseUs() {
 
           <div className="order-1 lg:order-2 relative">
             <div className="aspect-square md:aspect-[4/5] bg-ocean-deep rounded-[3rem] overflow-hidden relative shadow-2xl">
-              <div className="absolute inset-0 bg-[url('/images/products/salmon.jpg')] bg-cover bg-center mix-blend-overlay opacity-50 hover:opacity-70 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-[url('/images/products_final/salmon.jpg')] bg-cover bg-center mix-blend-overlay opacity-50 hover:opacity-70 transition-opacity duration-700" />
               
               <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12">
                 <div className="bg-ocean-white/10 backdrop-blur-xl border border-white/20 p-6 md:p-8 rounded-3xl">
