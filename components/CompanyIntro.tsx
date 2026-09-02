@@ -34,20 +34,8 @@ export function CompanyIntro() {
               {companyInfo.legalName} is a growing UK seafood importer, processor, wholesaler and retailer established in 2024. What began as a home-delivery service sourcing fresh fish from the London market has developed into an international seafood sourcing and UK-based processing operation, with established supplier relationships in India and Sri Lanka.
             </motion.div>
             
-            <motion.div variants={textReveal} className="text-lg md:text-xl text-ocean-deep/70 font-light leading-relaxed flex flex-col justify-between h-full">
-              <p>
-                Our Birmingham operation combines seafood sourcing, processing, cold storage and professional packaging, supported by HACCP-based food-safety controls and Birmingham City Council full approval <strong className="font-bold text-ocean-deep">(BI 307)</strong>.
-              </p>
-              <div className="flex items-center justify-start mt-6">
-                <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-lg overflow-hidden border border-ocean-deep/10 shadow-sm">
-                  <Image 
-                    src="/images/HACCP.jpeg" 
-                    alt="HACCP Certification" 
-                    fill 
-                    className="object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </div>
+            <motion.div variants={textReveal} className="text-lg md:text-xl text-ocean-deep/70 font-light leading-relaxed">
+              Our Birmingham operation combines seafood sourcing, processing, cold storage and professional packaging, supported by <strong className="font-bold text-ocean-blue bg-ocean-blue/10 px-2 py-1 rounded">HACCP-based food-safety controls</strong> and Birmingham City Council full approval <strong className="font-bold text-ocean-deep">(BI 307)</strong>.
             </motion.div>
 
             <motion.div variants={textReveal} className="text-lg md:text-xl text-ocean-deep/70 font-light leading-relaxed">
