@@ -41,7 +41,7 @@ export function Navbar() {
         <div className="container mx-auto max-w-[1440px] px-6 lg:px-12 flex items-center justify-between">
           
           {/* Logo */}
-          <Link href="/" className="relative z-50 flex items-center h-14 w-44 md:h-20 md:w-64 lg:h-24 lg:w-72 group">
+          <Link href="/" className="relative z-50 flex items-center h-20 w-56 md:h-24 md:w-72 lg:h-28 lg:w-80 group">
             <Image
               src="/images/logo-transparent.png"
               alt="Ocean Fresh"
