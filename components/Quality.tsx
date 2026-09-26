@@ -32,7 +32,7 @@ export function Quality() {
             
             <motion.h2 
               variants={textReveal}
-              className="text-4xl md:text-5xl font-light text-white leading-[1.1] tracking-tight mb-8"
+              className="font-serif text-4xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight mb-8"
             >
               Food Safety at the Heart of Our Operation.
             </motion.h2>

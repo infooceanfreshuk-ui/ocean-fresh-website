@@ -19,7 +19,7 @@ export function Footer() {
         >
           {/* Brand Info */}
           <motion.div variants={textReveal} className="lg:col-span-5">
-            <h3 className="text-4xl font-serif italic text-white tracking-tighter mb-8">{companyInfo.legalName || "Ocean Fresh."}</h3>
+            <h3 className="text-4xl font-serif text-white tracking-tighter mb-8">{companyInfo.legalName || "Ocean Fresh."}</h3>
             <p className="text-ocean-white/50 leading-relaxed max-w-sm text-lg font-light">
               Premium global seafood supply, processing, and export logistics.
             </p>

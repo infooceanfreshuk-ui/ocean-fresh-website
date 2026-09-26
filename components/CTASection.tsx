@@ -25,9 +25,9 @@ export function CTASection() {
           
           <motion.h2 
             variants={textReveal}
-            className="text-5xl md:text-7xl lg:text-8xl font-light text-ocean-deep leading-[1.1] tracking-tight mb-8"
+            className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-ocean-deep leading-[1.1] tracking-tight mb-8"
           >
-            Ready to secure your <span className="font-serif italic text-ocean-blue">supply line?</span>
+            Ready to secure your <span className="text-ocean-blue">supply line?</span>
           </motion.h2>
           
           <motion.p 

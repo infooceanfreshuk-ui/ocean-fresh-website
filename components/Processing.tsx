@@ -15,8 +15,26 @@ const stages = [
 
 export function Processing() {
   return (
-    <section className="bg-ocean-white py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6 lg:px-12 max-w-[1440px]">
+    <section className="relative w-full bg-[#0c1a2e]">
+      {/* Sticky Background Video */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/ocean_fresh_ad.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-[#0c1a2e]/80" />
+      </div>
+
+      {/* Foreground Content */}
+      <div className="relative z-10 w-full -mt-[100vh]">
+        <div className="py-32">
+          <div className="container mx-auto px-6 lg:px-12 max-w-[1440px]">
         
         <motion.div 
           variants={staggerContainer}
@@ -30,7 +48,7 @@ export function Processing() {
               The Process
             </span>
           </motion.div>
-          <motion.h2 variants={textReveal} className="text-4xl md:text-6xl font-light text-ocean-deep tracking-tight">
+          <motion.h2 variants={textReveal} className="font-serif text-4xl md:text-6xl font-bold text-white tracking-tight">
             How We Ensure Perfection
           </motion.h2>
         </motion.div>
@@ -66,18 +84,20 @@ export function Processing() {
                 viewport={{ once: true, margin: "-100px" }}
                 className="w-full lg:w-1/2 flex flex-col justify-center"
               >
-                <div className="text-ocean-navy text-6xl md:text-8xl font-serif italic mb-4 opacity-10">
+                <div className="text-white text-6xl md:text-8xl font-serif mb-4 opacity-10">
                   {stage.id}
                 </div>
-                <h3 className="text-3xl md:text-5xl font-light text-ocean-deep mb-6 tracking-tight">
+                <h3 className="text-3xl md:text-5xl font-light text-white mb-6 tracking-tight">
                   {stage.title}
                 </h3>
-                <p className="text-lg md:text-xl text-text-muted leading-relaxed max-w-lg">
+                <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-lg">
                   {stage.desc}
                 </p>
               </motion.div>
             </div>
           ))}
+        </div>
+          </div>
         </div>
       </div>
     </section>

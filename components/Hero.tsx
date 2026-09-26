@@ -1,100 +1,167 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Play, Leaf, Truck, Snowflake, ShieldCheck } from "lucide-react";
 import { Button } from "./ui/Button";
 import Link from "next/link";
-import Image from "next/image";
-import { companyInfo } from "@/config/company";
+import { useEffect, useRef, useState } from "react";
 
 export function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [images, setImages] = useState<HTMLImageElement[]>([]);
+  const [showContent, setShowContent] = useState(false);
+  const frameCount = 120;
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const yText = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  useEffect(() => {
+    const loadedImages: HTMLImageElement[] = [];
+    let loadedCount = 0;
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      img.src = `/hero-sequence/frame_${i.toString().padStart(3, '0')}.webp`;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === frameCount) {
+          setImages(loadedImages);
+        }
+      };
+      // For images that might fail to load
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === frameCount) setImages(loadedImages);
+      }
+      loadedImages.push(img);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (images.length === 0 || !canvasRef.current) return;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    if (!context) return;
+    
+    const handleScroll = () => {
+      const html = document.documentElement;
+      const scrollTop = html.scrollTop;
+      const maxScrollTop = window.innerHeight * 2;
+      const scrollFraction = Math.max(0, Math.min(1, scrollTop / maxScrollTop));
+      
+      const frameIndex = Math.min(
+        frameCount - 1,
+        Math.floor(scrollFraction * frameCount)
+      );
+      
+      setShowContent(scrollFraction > 0.75);
+      
+      requestAnimationFrame(() => {
+        if (images[frameIndex]) {
+          const img = images[frameIndex];
+          const hRatio = canvas.width / img.width;
+          const vRatio = canvas.height / img.height;
+          const ratio = Math.max(hRatio, vRatio);
+          const centerShift_x = (canvas.width - img.width * ratio) / 2;
+          const centerShift_y = (canvas.height - img.height * ratio) / 2;
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.drawImage(img, 0, 0, img.width, img.height,
+                             centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    const handleResize = () => {
+      if (canvasRef.current) {
+        canvasRef.current.width = window.innerWidth;
+        canvasRef.current.height = window.innerHeight;
+        handleScroll();
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [images]);
 
   return (
-    <section ref={containerRef} className="h-screen relative bg-ocean-deep overflow-hidden">
-      <motion.div style={{ scale }} className="absolute inset-0 w-full h-full">
-        {/* We can use an image or video here. Placeholder using standard color/gradient */}
-        <div className="absolute inset-0 bg-ocean-deep/80 z-10" />
-        <div 
-          className="absolute inset-0 z-0 opacity-50 bg-[url('https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=3270&auto=format&fit=crop')] bg-cover bg-center"
-        />
-      </motion.div>
+    <section className="relative w-full bg-[#0c1a2e] h-[300vh]">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
 
-      <motion.div 
-        style={{ y: yText, opacity }}
-        className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center mt-12"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="px-6 py-2 bg-white/5 backdrop-blur-sm text-fresh-aqua rounded-full text-xs font-semibold uppercase tracking-[0.2em] mb-8 inline-block border border-white/10">
-            {companyInfo.legalName || "Ocean Fresh UK"}
-          </span>
-        </motion.div>
-
-        <motion.h1 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="text-6xl md:text-8xl lg:text-[11rem] font-medium tracking-tighter text-white leading-[0.85] max-w-[1200px]"
-        >
-          Premium Seafood. <br />
-          <span className="text-white/60">Global Reach.</span>
-        </motion.h1>
-
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg md:text-2xl text-ocean-white/70 max-w-2xl mt-12 font-light leading-relaxed"
-        >
-          We source the finest seafood and process it to perfection. Trusted by international buyers for uncompromising quality and traceability.
-        </motion.p>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-6 mt-12 md:mt-16 pointer-events-auto"
-        >
-          <Link href="/products">
-            <Button size="lg" className="rounded-none text-sm px-12 py-8 gap-3 bg-white text-ocean-deep hover:bg-marine-surface uppercase tracking-widest font-bold">
-              Explore Our Catch
-              <ArrowRight size={18} />
-            </Button>
-          </Link>
-        </motion.div>
-
-
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3"
-      >
-        <span className="text-white/50 text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
-          <motion.div 
-            animate={{ y: [0, 48] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-            className="w-full h-1/2 bg-white absolute top-0 left-0"
-          />
+      <div className="relative pt-[140px] md:pt-[160px] pb-52 w-full flex-grow flex flex-col justify-center">
+        {/* Background Canvas */}
+        <div className="absolute inset-0 z-0 bg-[#0c1a2e]">
+          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a2e]/90 via-[#0c1a2e]/50 to-transparent z-10" />
         </div>
-      </motion.div>
+
+        {/* Content Content */}
+        <div className="container relative z-20 mx-auto max-w-[1440px] px-6 lg:px-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 30 }}
+            transition={{ duration: 0.8 }}
+            className={`max-w-2xl pointer-events-${showContent ? 'auto' : 'none'}`}
+          >
+
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-[5rem] font-bold text-white leading-[1.1] mb-6">
+              Premium <br />
+              Seafood. <br />
+              <span>Global Reach.</span>
+            </h1>
+
+            <p className="text-base md:text-lg text-white/90 max-w-lg mb-8 font-light leading-relaxed">
+              High-quality, sustainably sourced seafood delivered worldwide. Freshness you can trust.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <Link href="/products" className="w-full sm:w-auto">
+                <Button className="w-full rounded-full px-8 py-6 bg-white text-[#0c1a2e] hover:bg-gray-100 font-bold text-sm flex items-center justify-center gap-2 transition-transform hover:scale-105">
+                  Shop Now
+                  <ArrowRight size={18} />
+                </Button>
+              </Link>
+              <Link href="/about" className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full rounded-full px-8 py-6 bg-transparent text-white border-white/30 hover:bg-white/10 font-bold text-sm flex items-center justify-center gap-2 backdrop-blur-sm">
+                  <Play size={18} />
+                  Explore Our Story
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Info Cards (Placed absolutely at the bottom of the container) */}
+        <div className="absolute bottom-16 md:bottom-20 left-0 right-0 z-30 container mx-auto max-w-[1440px] px-6 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: Leaf, label: "Sustainably\nSourced" },
+              { icon: Truck, label: "Worldwide\nShipping" },
+              { icon: Snowflake, label: "Cold Chain\nAssured" },
+              { icon: ShieldCheck, label: "HACCP\nCertified" }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 20 }}
+                transition={{ delay: 0.4 + (i * 0.1), duration: 0.6 }}
+                className={`flex items-center gap-3 md:gap-4 text-white pointer-events-${showContent ? 'auto' : 'none'}`}
+              >
+                <div className="w-10 h-10 md:w-14 md:h-14 shrink-0 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-md bg-white/5">
+                  <item.icon size={20} className="text-white" />
+                </div>
+                <span className="text-[10px] md:text-sm font-medium leading-tight whitespace-pre-line">
+                  {item.label}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      </div>
     </section>
   );
 }

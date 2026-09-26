@@ -1,13 +1,15 @@
 import { Hero } from "@/components/Hero";
 import { CompanyIntro } from "@/components/CompanyIntro";
-
-import { SeafoodStory } from "@/components/SeafoodStory";
 import { ProductShowcase } from "@/components/ProductShowcase";
+import { getProducts } from "@/lib/shopify";
 import { Processing } from "@/components/Processing";
 import { Quality } from "@/components/Quality";
 import { CTASection } from "@/components/CTASection";
 
-export default function Home() {
+export default async function Home() {
+  const allProducts = await getProducts();
+  const featuredProducts = allProducts.slice(0, 5);
+
   return (
     <main className="min-h-screen bg-ocean-white">
       <Hero />
@@ -17,8 +19,7 @@ export default function Home() {
 
         </div>
         <div id="products">
-          <SeafoodStory />
-          <ProductShowcase />
+          <ProductShowcase products={featuredProducts} />
         </div>
         <div id="processing">
           <Processing />
