@@ -103,7 +103,7 @@ export function ProductDetailsClient({ product }: { product: any }) {
           <div className="w-full lg:w-[40%] flex gap-4 h-[500px]">
             {/* Thumbnails */}
             <div className="w-20 shrink-0 flex flex-col gap-3 h-full overflow-y-auto hidden sm:flex hide-scrollbar">
-              {thumbnails.map((img, idx) => (
+              {thumbnails.map((img: string, idx: number) => (
                 <div key={idx} className={`w-full aspect-[4/3] rounded-lg border-2 overflow-hidden cursor-pointer ${idx === 0 ? 'border-ocean-blue' : 'border-transparent'}`}>
                   <Image src={img} alt="thumbnail" width={80} height={60} className="object-cover w-full h-full" />
                 </div>
